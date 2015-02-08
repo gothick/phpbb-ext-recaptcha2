@@ -1,0 +1,28 @@
+{
+   "name": "gothick/newrecaptcha",
+   "type": "phpbb-extension",
+   "description": "New Google reCAPTCHA anti-spambot plugin",
+   "homepage": "https://github.com/gothick/phpbb-ext-newrecaptcha",
+   "version": "0.1.1",
+   "time": "2015-01-29",
+   "license": "GPL-2.0",
+   "authors": [{
+      "name": "Matt Gibson",
+      "email": "matt@mattgibsoncreative.co.uk",
+      "homepage": "http://mattgibsoncreative.co.uk",
+      "role": "Lead Developer"
+   }],
+   "require": {
+      "php": ">=5.3.3",
+      "composer/installers": "~1.0"
+   },
+   "require-dev": {
+      "phpbb/epv": "dev-master"
+   },
+   "extra": {
+      "display-name": "New reCAPTCHA",
+      "soft-require" : {
+         "phpbb/phpbb": ">=3.1.0-RC2,<3.2.*@dev"
+      }
+   }
+}
