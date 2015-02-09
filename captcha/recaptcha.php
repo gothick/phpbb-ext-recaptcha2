@@ -103,8 +103,9 @@ class recaptcha extends \phpbb\captcha\plugins\captcha_abstract
 		// TODO: Take this out. It's just temporary, for testing.
 		//$recaptcha = new ReCaptcha();
 
-		// TODO: Sort our languages out
-		//$user->add_lang('captcha_recaptcha');
+		// TODO: Sort our languages out. It's nice to leverage the built-in
+		// recaptcha, but should we just move everything to our own class?
+		$this->user->add_lang('captcha_recaptcha');
 		parent::init($type);
 		// TODO: use $request object
 		$this->g_recaptcha_response = request_var('g-recaptcha-response', '');
@@ -267,7 +268,8 @@ class recaptcha extends \phpbb\captcha\plugins\captcha_abstract
 			}
 			else
 			{
-				return $user->lang['RECAPTCHA_INCORRECT'];
+				// TODO: This needs a custom message
+				return $this->user->lang['RECAPTCHA_INCORRECT'];
 			}
 		}
 	}
