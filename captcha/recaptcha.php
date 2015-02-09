@@ -208,6 +208,7 @@ class recaptcha extends \phpbb\captcha\plugins\captcha_abstract
 			$template->assign_vars(array(
 				//'RECAPTCHA_SERVER'			=> $this->recaptcha_server,
 				//'RECAPTCHA_PUBKEY'			=> isset($config['recaptcha_pubkey']) ? $config['recaptcha_pubkey'] : '',
+				'NEWRECAPTCHA_SITEKEY'			=> isset($this->config[self::$CONFIG_SITEKEY]) ? $this->config[self::$CONFIG_SITEKEY] : '',
 				'RECAPTCHA_ERRORGET'		=> '',
 				'S_RECAPTCHA_AVAILABLE'		=> self::is_available(),
 				'S_CONFIRM_CODE'			=> true,
