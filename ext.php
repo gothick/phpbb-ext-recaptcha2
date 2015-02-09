@@ -30,9 +30,10 @@ class ext extends \phpbb\extension\base
 
 				if ($newrecaptcha->get_service_name() == $config['captcha_plugin'])
 				{
-					// Falling back to the built-in reCAPTCHA doesn't seem too
-					// presumptious.
-					$config->set('captcha_plugin', 'core.captcha.plugins.recaptcha');
+					// Used to fall back to reCAPTCHA, but of course, that may not be
+					// configured. Fall back to something that doesn't need configuration
+					// and is likely to just work.
+					$config->set('captcha_plugin', 'core.captcha.plugins.nogd');
 				}
 				return 'captcha_reset_to_core';
 			break;
