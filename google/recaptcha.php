@@ -45,7 +45,7 @@
  *
  * https://github.com/jmcastagnetto/ReCAPTCHA/blob/modifications/php/recaptchalib.php
  */
-namespace gothick\newrecaptcha\google;
+namespace gothick\recaptcha2\google;
 
 class ReCaptcha
 {

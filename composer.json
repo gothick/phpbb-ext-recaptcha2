@@ -1,8 +1,8 @@
 {
-   "name": "gothick/newrecaptcha",
+   "name": "gothick/recaptcha2",
    "type": "phpbb-extension",
-   "description": "New Google reCAPTCHA anti-spambot plugin",
-   "homepage": "https://github.com/gothick/phpbb-ext-newrecaptcha",
+   "description": "Google reCAPTCHA 2.0 anti-spambot plugin",
+   "homepage": "https://github.com/gothick/phpbb-ext-recaptcha2",
    "version": "0.1.1",
    "time": "2015-01-29",
    "license": "GPL-2.0",
@@ -20,7 +20,7 @@
       "phpbb/epv": "dev-master"
    },
    "extra": {
-      "display-name": "New reCAPTCHA",
+      "display-name": "reCAPTCHA 2.0",
       "soft-require" : {
          "phpbb/phpbb": ">=3.1.0-RC2,<3.2.*@dev"
       }

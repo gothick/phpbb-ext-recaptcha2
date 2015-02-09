@@ -1,14 +1,14 @@
 <?php
 /**
- * Gothick New reCAPTCHA
+ * Gothick reCAPTCHA 2.0
  *
- * @package phpBB Extension - New reCAPTCHA
+ * @package phpBB Extension - reCAPTCHA 2.0
  * @copyright (c) 2015 Matt Gibson Creative Ltd.
  * @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
  *
  */
 
-namespace gothick\newrecaptcha;
+namespace gothick\recaptcha2;
 
 class ext extends \phpbb\extension\base
 {
@@ -25,10 +25,10 @@ class ext extends \phpbb\extension\base
 				/* @var $config \phpbb\config\config */
 				$config = $this->container->get('config');
 
-				/* @var $newrecaptcha \gothick\newrecaptcha\captcha\recaptcha */
-				$newrecaptcha = $this->container->get('gothick.newrecaptcha.captcha.recaptcha');
+				/* @var $recaptcha2 \gothick\recaptcha2\captcha\recaptcha2 */
+				$recaptcha2 = $this->container->get('gothick.recaptcha2.captcha.recaptcha');
 
-				if ($newrecaptcha->get_service_name() == $config['captcha_plugin'])
+				if ($recaptcha2->get_service_name() == $config['captcha_plugin'])
 				{
 					// Used to fall back to reCAPTCHA, but of course, that may not be
 					// configured. Fall back to something that doesn't need configuration

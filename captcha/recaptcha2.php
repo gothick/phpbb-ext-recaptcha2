@@ -1,16 +1,16 @@
 <?php
 /**
- * Gothick New reCAPTCHA
+ * Gothick reCAPTCHA 2.0
  *
- * @package phpBB Extension - New reCAPTCHA
+ * @package phpBB Extension - reCAPTCHA 2.0
  * @copyright (c) 2015 Matt Gibson Creative Ltd.
  * @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
  *
  */
 
-namespace gothick\newrecaptcha\captcha;
+namespace gothick\recaptcha2\captcha;
 
-class recaptcha extends \phpbb\captcha\plugins\captcha_abstract
+class recaptcha2 extends \phpbb\captcha\plugins\captcha_abstract
 {
 	// https://www.google.com/recaptcha/api/siteverify?secret=your_secret&response=response_string&remoteip=user_ip_address
 	var $recaptcha_verify_url = 'https://www.google.com/recaptcha/api/siteverify';
@@ -18,8 +18,8 @@ class recaptcha extends \phpbb\captcha\plugins\captcha_abstract
 	var $g_recaptcha_response;
 
 	// PHP really needs const with an access modifier.
-	protected static $CONFIG_SITEKEY = 'gothick_newrecaptcha_sitekey';
-	protected static $CONFIG_SECRETKEY = 'gothick_newrecaptcha_secretkey';
+	protected static $CONFIG_SITEKEY = 'gothick_recaptcha2_sitekey';
+	protected static $CONFIG_SECRETKEY = 'gothick_recaptcha2_secretkey';
 
 	/**
 	 * @var \phpbb\config\config
@@ -98,7 +98,7 @@ class recaptcha extends \phpbb\captcha\plugins\captcha_abstract
 
 	function init($type)
 	{
-		$this->user->add_lang_ext('gothick/newrecaptcha', 'captcha_newrecaptcha');
+		$this->user->add_lang_ext('gothick/recaptcha2', 'captcha_recaptcha2');
 		parent::init($type);
 		$this->g_recaptcha_response = $this->request->variable('g-recaptcha-response', '');
 	}
@@ -107,7 +107,7 @@ class recaptcha extends \phpbb\captcha\plugins\captcha_abstract
 	{
 		// We need to load the language files here for the ACP page, as it doesn't call init. This is
 		// where the "old" reCAPTCHA plug in core does it, anyway...
-		$this->user->add_lang_ext('gothick/newrecaptcha', 'captcha_newrecaptcha');
+		$this->user->add_lang_ext('gothick/recaptcha2', 'captcha_recaptcha2');
 
 		return (!empty($this->config[self::$CONFIG_SITEKEY]) && !empty($this->config[self::$CONFIG_SECRETKEY]));
 	}
@@ -122,7 +122,7 @@ class recaptcha extends \phpbb\captcha\plugins\captcha_abstract
 
 	static public function get_name()
 	{
-		return 'GOTHICK_NEWRECAPTCHA';
+		return 'GOTHICK_RECAPTCHA2';
 	}
 
 	/**
@@ -136,11 +136,11 @@ class recaptcha extends \phpbb\captcha\plugins\captcha_abstract
 	function acp_page($id, &$module)
 	{
 		$captcha_vars = array(
-			self::$CONFIG_SITEKEY => 'NEWRECAPTCHA_SITEKEY',
-			self::$CONFIG_SECRETKEY => 'NEWRECAPTCHA_SECRETKEY',
+			self::$CONFIG_SITEKEY => 'RECAPTCHA2_SITEKEY',
+			self::$CONFIG_SECRETKEY => 'RECAPTCHA2_SECRETKEY',
 		);
 
-		$module->tpl_name = '@gothick_newrecaptcha/captcha_newrecaptcha_acp';
+		$module->tpl_name = '@gothick_recaptcha2/captcha_recaptcha2_acp';
 		$module->page_title = 'ACP_VC_SETTINGS';
 		$form_key = 'acp_captcha';
 		add_form_key($form_key);
@@ -197,26 +197,27 @@ class recaptcha extends \phpbb\captcha\plugins\captcha_abstract
 		else
 		{
 			$contact_link = phpbb_get_board_contact_link($this->config, $this->phpbb_root_path, $this->phpEx);
-			$explain = $this->user->lang(($this->type != CONFIRM_POST) ? 'GOTHICK_RECAPTCHA_CONFIRM_EXPLAIN' : 'GOTHICK_RECAPTCHA_POST_CONFIRM_EXPLAIN', '<a href="' . $contact_link . '">', '</a>');
+			$explain = $this->user->lang(($this->type != CONFIRM_POST) ? 'GOTHICK_RECAPTCHA2_CONFIRM_EXPLAIN' : 'GOTHICK_RECAPTCHA2_POST_CONFIRM_EXPLAIN', '<a href="' . $contact_link . '">', '</a>');
 
-			$recaptcha_lang = $this->user->lang('GOTHICK_NEWRECAPTCHA_LANG');
-			if ($recaptcha_lang == 'GOTHICK_NEWRECAPTCHA_LANG')
+			// Language code for reCAPTCHA to use
+			$recaptcha2_lang = $this->user->lang('GOTHICK_RECAPTCHA2_LANG');
+			if ($recaptcha2_lang == 'GOTHICK_RECAPTCHA2_LANG')
 			{
 				// If we don't have a language code set in our language file, then we don't
 				// pass anything; reCAPTCHA will attempt to guess the user's language.
-				$recaptcha_lang = '';
+				$recaptcha2_lang = '';
 			}
 
 			$this->template->assign_vars(array(
-				'NEWRECAPTCHA_SITEKEY'			=> isset($this->config[self::$CONFIG_SITEKEY]) ? $this->config[self::$CONFIG_SITEKEY] : '',
+				'RECAPTCHA2_SITEKEY'			=> isset($this->config[self::$CONFIG_SITEKEY]) ? $this->config[self::$CONFIG_SITEKEY] : '',
 				'S_RECAPTCHA_AVAILABLE'			=> self::is_available(),
 				'S_CONFIRM_CODE'				=> true,
 				'S_TYPE'						=> $this->type,
 				'L_CONFIRM_EXPLAIN'				=> $explain,
-				'L_GOTHICK_NEWRECAPTCHA_LANG'	=> $recaptcha_lang // If we don't pass it explicitly, INCLUDEJS won't use it.
+				'L_GOTHICK_RECAPTCHA2_LANG'	=> $recaptcha2_lang // If we don't pass it explicitly, INCLUDEJS won't use it.
 			));
 
-			return '@gothick_newrecaptcha/captcha_newrecaptcha.html';
+			return '@gothick_recaptcha2/captcha_recaptcha2.html';
 		}
 	}
 
@@ -258,7 +259,7 @@ class recaptcha extends \phpbb\captcha\plugins\captcha_abstract
 		{
 			try
 			{
-				$recaptcha = new \gothick\newrecaptcha\google\ReCaptcha($this->config[self::$CONFIG_SECRETKEY]);
+				$recaptcha = new \gothick\recaptcha2\google\ReCaptcha($this->config[self::$CONFIG_SECRETKEY]);
 				$response = $recaptcha->verifyResponse($this->user->ip, $this->request->variable('g-recaptcha-response', ''));
 				if ($response->success)
 				{
@@ -268,12 +269,12 @@ class recaptcha extends \phpbb\captcha\plugins\captcha_abstract
 				else
 				{
 					// TODO: Can we pass something less general back from the response?
-					return $this->user->lang['GOTHICK_NEWRECAPTCHA_INCORRECT'];
+					return $this->user->lang['GOTHICK_RECAPTCHA2_INCORRECT'];
 				}
 			}
 			catch (\Exception $e)
 			{
-				trigger_error($this->user->lang('GOTHICK_NEWRECAPTCHA_EXCEPTION', $e->getMessage()), E_USER_ERROR);
+				trigger_error($this->user->lang('GOTHICK_RECAPTCHA2_EXCEPTION', $e->getMessage()), E_USER_ERROR);
 			}
 		}
 	}

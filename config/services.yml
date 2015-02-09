@@ -1,8 +1,8 @@
 services:
-    gothick.newrecaptcha.captcha.recaptcha:
-        class: gothick\newrecaptcha\captcha\recaptcha
+    gothick.recaptcha2.captcha.recaptcha2:
+        class: gothick\recaptcha2\captcha\recaptcha2
         calls:
-            - [set_name, [gothick.newrecaptcha.captcha.recaptcha]]
+            - [set_name, [gothick.recaptcha2.captcha.recaptcha2]]
         arguments:
             - @config
             - @dbal.conn

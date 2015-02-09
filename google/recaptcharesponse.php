@@ -45,7 +45,7 @@
  * A ReCaptchaResponse is returned from checkAnswer().
  */
 
-namespace gothick\newrecaptcha\google;
+namespace gothick\recaptcha2\google;
 
 class ReCaptchaResponse
 {

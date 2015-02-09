@@ -1,0 +1,16 @@
+<!-- IF S_RECAPTCHA_AVAILABLE -->
+	<!-- INCLUDEJS https://www.google.com/recaptcha/api.js?hl={L_GOTHICK_RECAPTCHA2_LANG} -->
+	<dl>
+	<dd>
+	<div class="g-recaptcha" data-sitekey="{RECAPTCHA2_SITEKEY}" ></div>
+	<noscript>
+	<div>
+		{L_GOTHICK_RECAPTCHA2_NOSCRIPT}
+	</div>
+	</noscript>
+
+	</dd>
+	</dl>
+<!-- ELSE -->
+{L_RECAPTCHA_NOT_AVAILABLE}
+<!-- ENDIF -->
