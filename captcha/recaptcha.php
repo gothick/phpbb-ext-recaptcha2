@@ -100,12 +100,7 @@ class recaptcha extends \phpbb\captcha\plugins\captcha_abstract
 
 	function init($type)
 	{
-		// TODO: Take this out. It's just temporary, for testing.
-		//$recaptcha = new ReCaptcha();
-
-		// TODO: Sort our languages out. It's nice to leverage the built-in
-		// recaptcha, but should we just move everything to our own class?
-		$this->user->add_lang('captcha_recaptcha');
+		$this->user->add_lang_ext('gothick/newrecaptcha', 'captcha_newrecaptcha');
 		parent::init($type);
 		// TODO: use $request object
 		$this->g_recaptcha_response = request_var('g-recaptcha-response', '');
@@ -113,8 +108,10 @@ class recaptcha extends \phpbb\captcha\plugins\captcha_abstract
 
 	public function is_available()
 	{
-		// TODO: Sort our languages out
-		// $this->user->add_lang('captcha_recaptcha');
+		// We need to load the language files here for the ACP page, as it doesn't call init. This is
+		// where the "old" reCAPTCHA plug in core does it, anyway...
+		$this->user->add_lang_ext('gothick/newrecaptcha', 'captcha_newrecaptcha');
+
 		return (!empty($this->config[self::$CONFIG_SITEKEY]) && !empty($this->config[self::$CONFIG_SECRETKEY]));
 	}
 
@@ -206,7 +203,15 @@ class recaptcha extends \phpbb\captcha\plugins\captcha_abstract
 		else
 		{
 			$contact_link = phpbb_get_board_contact_link($config, $phpbb_root_path, $phpEx);
-			$explain = $user->lang(($this->type != CONFIRM_POST) ? 'CONFIRM_EXPLAIN' : 'POST_CONFIRM_EXPLAIN', '<a href="' . $contact_link . '">', '</a>');
+			$explain = $user->lang(($this->type != CONFIRM_POST) ? 'GOTHICK_RECAPTCHA_CONFIRM_EXPLAIN' : 'GOTHICK_RECAPTCHA_POST_CONFIRM_EXPLAIN', '<a href="' . $contact_link . '">', '</a>');
+
+			$recaptcha_lang = $user->lang('GOTHICK_NEWRECAPTCHA_LANG');
+			if ($recaptcha_lang == 'GOTHICK_NEWRECAPTCHA_LANG')
+			{
+				// If we don't have a language code set in our language file, then we don't
+				// pass anything; reCAPTCHA will attempt to guess the user's language.
+				$recaptcha_lang = '';
+			}
 
 			// TODO: Do we need all these set up?
 			$template->assign_vars(array(
@@ -216,6 +221,7 @@ class recaptcha extends \phpbb\captcha\plugins\captcha_abstract
 				'S_CONFIRM_CODE'			=> true,
 				'S_TYPE'					=> $this->type,
 				'L_CONFIRM_EXPLAIN'			=> $explain,
+				'L_GOTHICK_NEWRECAPTCHA_LANG' => $recaptcha_lang // If we don't pass it explicitly, INCLUDEJS won't use it.
 			));
 
 			return '@gothick_newrecaptcha/captcha_newrecaptcha.html';
@@ -268,8 +274,8 @@ class recaptcha extends \phpbb\captcha\plugins\captcha_abstract
 			}
 			else
 			{
-				// TODO: This needs a custom message
-				return $this->user->lang['RECAPTCHA_INCORRECT'];
+				// TODO: Can we pass something less general back from the response?
+				return $this->user->lang['GOTHICK_NEWRECAPTCHA_INCORRECT'];
 			}
 		}
 	}
