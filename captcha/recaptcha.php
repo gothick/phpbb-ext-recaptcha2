@@ -100,6 +100,9 @@ class recaptcha extends \phpbb\captcha\plugins\captcha_abstract
 
 	function init($type)
 	{
+		// TODO: Take this out. It's just temporary, for testing.
+		//$recaptcha = new ReCaptcha();
+
 		// TODO: Sort our languages out
 		//$user->add_lang('captcha_recaptcha');
 		parent::init($type);
@@ -204,10 +207,8 @@ class recaptcha extends \phpbb\captcha\plugins\captcha_abstract
 			$contact_link = phpbb_get_board_contact_link($config, $phpbb_root_path, $phpEx);
 			$explain = $user->lang(($this->type != CONFIRM_POST) ? 'CONFIRM_EXPLAIN' : 'POST_CONFIRM_EXPLAIN', '<a href="' . $contact_link . '">', '</a>');
 
-			// TODO: Use $config object
+			// TODO: Do we need all these set up?
 			$template->assign_vars(array(
-				//'RECAPTCHA_SERVER'			=> $this->recaptcha_server,
-				//'RECAPTCHA_PUBKEY'			=> isset($config['recaptcha_pubkey']) ? $config['recaptcha_pubkey'] : '',
 				'NEWRECAPTCHA_SITEKEY'			=> isset($this->config[self::$CONFIG_SITEKEY]) ? $this->config[self::$CONFIG_SITEKEY] : '',
 				'RECAPTCHA_ERRORGET'		=> '',
 				'S_RECAPTCHA_AVAILABLE'		=> self::is_available(),
@@ -256,7 +257,18 @@ class recaptcha extends \phpbb\captcha\plugins\captcha_abstract
 		}
 		else
 		{
-			return $this->recaptcha_check_answer();
+			//TODO: Exception handling
+			$recaptcha = new \gothick\newrecaptcha\google\ReCaptcha($this->config[self::$CONFIG_SECRETKEY]);
+			$response = $recaptcha->verifyResponse($this->user->ip, $this->request->variable('g-recaptcha-response', ''));
+			if ($response->success)
+			{
+				$this->solved = true;
+				return false;
+			}
+			else
+			{
+				return $user->lang['RECAPTCHA_INCORRECT'];
+			}
 		}
 	}
 }
