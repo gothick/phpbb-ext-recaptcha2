@@ -10,8 +10,6 @@
 
 namespace gothick\newrecaptcha\captcha;
 
-use Symfony\Component\DependencyInjection\ContainerInterface;
-
 class recaptcha extends \phpbb\captcha\plugins\captcha_abstract
 {
 	// https://www.google.com/recaptcha/api/siteverify?secret=your_secret&response=response_string&remoteip=user_ip_address
@@ -102,8 +100,7 @@ class recaptcha extends \phpbb\captcha\plugins\captcha_abstract
 	{
 		$this->user->add_lang_ext('gothick/newrecaptcha', 'captcha_newrecaptcha');
 		parent::init($type);
-		// TODO: use $request object
-		$this->g_recaptcha_response = request_var('g-recaptcha-response', '');
+		$this->g_recaptcha_response = $this->request->variable('g-recaptcha-response', '');
 	}
 
 	public function is_available()
@@ -193,19 +190,16 @@ class recaptcha extends \phpbb\captcha\plugins\captcha_abstract
 
 	function get_template()
 	{
-		// TODO: Use dependency-injected objects
-		global $config, $user, $template, $phpbb_root_path, $phpEx;
-
 		if ($this->is_solved())
 		{
 			return false;
 		}
 		else
 		{
-			$contact_link = phpbb_get_board_contact_link($config, $phpbb_root_path, $phpEx);
-			$explain = $user->lang(($this->type != CONFIRM_POST) ? 'GOTHICK_RECAPTCHA_CONFIRM_EXPLAIN' : 'GOTHICK_RECAPTCHA_POST_CONFIRM_EXPLAIN', '<a href="' . $contact_link . '">', '</a>');
+			$contact_link = phpbb_get_board_contact_link($this->config, $this->phpbb_root_path, $this->phpEx);
+			$explain = $this->user->lang(($this->type != CONFIRM_POST) ? 'GOTHICK_RECAPTCHA_CONFIRM_EXPLAIN' : 'GOTHICK_RECAPTCHA_POST_CONFIRM_EXPLAIN', '<a href="' . $contact_link . '">', '</a>');
 
-			$recaptcha_lang = $user->lang('GOTHICK_NEWRECAPTCHA_LANG');
+			$recaptcha_lang = $this->user->lang('GOTHICK_NEWRECAPTCHA_LANG');
 			if ($recaptcha_lang == 'GOTHICK_NEWRECAPTCHA_LANG')
 			{
 				// If we don't have a language code set in our language file, then we don't
@@ -214,7 +208,7 @@ class recaptcha extends \phpbb\captcha\plugins\captcha_abstract
 			}
 
 			// TODO: Do we need all these set up?
-			$template->assign_vars(array(
+			$this->template->assign_vars(array(
 				'NEWRECAPTCHA_SITEKEY'			=> isset($this->config[self::$CONFIG_SITEKEY]) ? $this->config[self::$CONFIG_SITEKEY] : '',
 				'RECAPTCHA_ERRORGET'		=> '',
 				'S_RECAPTCHA_AVAILABLE'		=> self::is_available(),
