@@ -1,0 +1,16 @@
+services:
+    gothick.newrecaptcha.captcha.recaptcha:
+        class: gothick\newrecaptcha\captcha\recaptcha
+        calls:
+            - [set_name, [gothick.newrecaptcha.captcha.recaptcha]]
+        arguments:
+            - @config
+            - @dbal.conn
+            - @user
+            - @request
+            - @template
+            - @log
+            - %core.root_path%
+            - %core.php_ext%
+        tags:
+            - { name: captcha.plugins }
