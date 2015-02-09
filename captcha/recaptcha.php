@@ -207,15 +207,13 @@ class recaptcha extends \phpbb\captcha\plugins\captcha_abstract
 				$recaptcha_lang = '';
 			}
 
-			// TODO: Do we need all these set up?
 			$this->template->assign_vars(array(
 				'NEWRECAPTCHA_SITEKEY'			=> isset($this->config[self::$CONFIG_SITEKEY]) ? $this->config[self::$CONFIG_SITEKEY] : '',
-				'RECAPTCHA_ERRORGET'		=> '',
-				'S_RECAPTCHA_AVAILABLE'		=> self::is_available(),
-				'S_CONFIRM_CODE'			=> true,
-				'S_TYPE'					=> $this->type,
-				'L_CONFIRM_EXPLAIN'			=> $explain,
-				'L_GOTHICK_NEWRECAPTCHA_LANG' => $recaptcha_lang // If we don't pass it explicitly, INCLUDEJS won't use it.
+				'S_RECAPTCHA_AVAILABLE'			=> self::is_available(),
+				'S_CONFIRM_CODE'				=> true,
+				'S_TYPE'						=> $this->type,
+				'L_CONFIRM_EXPLAIN'				=> $explain,
+				'L_GOTHICK_NEWRECAPTCHA_LANG'	=> $recaptcha_lang // If we don't pass it explicitly, INCLUDEJS won't use it.
 			));
 
 			return '@gothick_newrecaptcha/captcha_newrecaptcha.html';
@@ -258,18 +256,24 @@ class recaptcha extends \phpbb\captcha\plugins\captcha_abstract
 		}
 		else
 		{
-			//TODO: Exception handling
-			$recaptcha = new \gothick\newrecaptcha\google\ReCaptcha($this->config[self::$CONFIG_SECRETKEY]);
-			$response = $recaptcha->verifyResponse($this->user->ip, $this->request->variable('g-recaptcha-response', ''));
-			if ($response->success)
+			try
 			{
-				$this->solved = true;
-				return false;
+				$recaptcha = new \gothick\newrecaptcha\google\ReCaptcha($this->config[self::$CONFIG_SECRETKEY]);
+				$response = $recaptcha->verifyResponse($this->user->ip, $this->request->variable('g-recaptcha-response', ''));
+				if ($response->success)
+				{
+					$this->solved = true;
+					return false;
+				}
+				else
+				{
+					// TODO: Can we pass something less general back from the response?
+					return $this->user->lang['GOTHICK_NEWRECAPTCHA_INCORRECT'];
+				}
 			}
-			else
+			catch (\Exception $e)
 			{
-				// TODO: Can we pass something less general back from the response?
-				return $this->user->lang['GOTHICK_NEWRECAPTCHA_INCORRECT'];
+				trigger_error($this->user->lang('GOTHICK_NEWRECAPTCHA_EXCEPTION', $e->getMessage()), E_USER_ERROR);
 			}
 		}
 	}

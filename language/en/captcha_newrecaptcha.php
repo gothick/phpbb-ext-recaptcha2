@@ -54,5 +54,5 @@ $lang = array_merge($lang, array(
 	'GOTHICK_NEWRECAPTCHA_EXPLAIN'				=> 'In an effort to prevent automatic submissions, we require that you confirm you’re human using Google’s reCAPTCHA sservice.',
 	'GOTHICK_NEWRECAPTCHA_NOSCRIPT'				=> 'You must enable JavaScript in your browser to complete the reCAPTCHA',
 	// TODO if necessary. We may just want to pass back dynamic messages from exceptions thrown from the reCAPTCHA library, its own specific responses, etc.
-	'RECAPTCHA_SOCKET_ERROR'		=> 'There was a problem connecting to the reCAPTCHA service: could not open socket. Try again later.',
+	'GOTHICK_NEWRECAPTCHA_EXCEPTION'			=> 'There was a general error connecting to the reCAPTCHA service: %1$s. Try again later.',
 ));
