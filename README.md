@@ -1,3 +1,6 @@
-# phpbb-ext-newrecaptcha
+# phpbb-ext-recaptcha2
 
-MG 8 Feb 2015 This has had virtually no work done so far. Don't use it.
+Current status: pre-alpha. I've tested it local, for registrations only,
+and it seems to work. I'm not promising any more than that :)
+
+More work to come.
