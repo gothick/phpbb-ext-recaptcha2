@@ -47,7 +47,7 @@
  */
 namespace gothick\recaptcha2\google;
 
-class ReCaptcha
+class recaptcha
 {
 	const SIGNUP_URL = 'https://www.google.com/recaptcha/admin';
 	const SITEVERIFY_URL = 'https://www.google.com/recaptcha/api/siteverify?';
@@ -134,17 +134,17 @@ class ReCaptcha
 	 * @param string $remoteIp IP address of end user.
 	 * @param string $response response string from recaptcha verification.
 	 *
-	 * @return ReCaptchaResponse
+	 * @return recaptcha_response
 	 */
 	public function verifyResponse ($remoteIp, $response)
 	{
 		// Discard empty solution submissions
 		if ($response == null || strlen($response) == 0)
 		{
-			$recaptchaResponse = new ReCaptchaResponse();
-			$recaptchaResponse->success = false;
-			$recaptchaResponse->errorCodes = 'missing-input';
-			return $recaptchaResponse;
+			$recaptcha_response = new recaptcha_response();
+			$recaptcha_response->success = false;
+			$recaptcha_response->errorCodes = 'missing-input';
+			return $recaptcha_response;
 		}
 		$getResponse = $this->submitHttpGet(self::SITEVERIFY_URL,
 				array(
@@ -154,19 +154,19 @@ class ReCaptcha
 						'response' => $response
 				));
 		$answers = json_decode($getResponse, true);
-		$recaptchaResponse = new ReCaptchaResponse();
+		$recaptcha_response = new recaptcha_response();
 		if (isset($answers['success']))
 		{
-			$recaptchaResponse->success = true;
+			$recaptcha_response->success = true;
 		}
 		else
 		{
-			$recaptchaResponse->success = false;
+			$recaptcha_response->success = false;
 			if (isset($answers['error-codes']))
 			{
-				$recaptchaResponse->errorCodes = $answers['error-codes'];
+				$recaptcha_response->errorCodes = $answers['error-codes'];
 			}
 		}
-		return $recaptchaResponse;
+		return $recaptcha_response;
 	}
 }

@@ -42,12 +42,12 @@
  */
 
 /**
- * A ReCaptchaResponse is returned from checkAnswer().
+ * A recaptcha_response is returned from checkAnswer().
  */
 
 namespace gothick\recaptcha2\google;
 
-class ReCaptchaResponse
+class recaptcha_response
 {
 	public $success;
 	public $errorCodes;

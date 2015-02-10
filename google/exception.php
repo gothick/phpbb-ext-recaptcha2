@@ -13,6 +13,6 @@ namespace gothick\recaptcha2\google;
 /**
  * So we can tell that it's specifically a ReCaptcha exception.
  */
-class Exception extends \Exception
+class exception extends \Exception
 {
 }
