@@ -26,7 +26,7 @@ class ext extends \phpbb\extension\base
 				$config = $this->container->get('config');
 
 				/* @var $recaptcha2 \gothick\recaptcha2\captcha\recaptcha2 */
-				$recaptcha2 = $this->container->get('gothick.recaptcha2.captcha.recaptcha');
+				$recaptcha2 = $this->container->get('gothick.recaptcha2.captcha.recaptcha2');
 
 				if ($recaptcha2->get_service_name() == $config['captcha_plugin'])
 				{
