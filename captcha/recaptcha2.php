@@ -259,7 +259,7 @@ class recaptcha2 extends \phpbb\captcha\plugins\captcha_abstract
 		{
 			try
 			{
-				$recaptcha = new \gothick\recaptcha2\google\ReCaptcha($this->config[self::$CONFIG_SECRETKEY]);
+				$recaptcha = new \gothick\recaptcha2\google\recaptcha($this->config[self::$CONFIG_SECRETKEY]);
 				$response = $recaptcha->verifyResponse($this->user->ip, $this->request->variable('g-recaptcha-response', ''));
 				if ($response->success)
 				{
