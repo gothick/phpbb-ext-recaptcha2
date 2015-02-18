@@ -1,14 +1,4 @@
-<!-- gothick/recaptcha2 prosilver captcha_recaptcha2 -->
-<!-- IF S_TYPE == 1 -->
-<div class="panel captcha-panel">
-	<div class="inner">
-
-	<h3 class="captcha-title">{L_CONFIRMATION}</h3>
-	<p>{L_CONFIRM_EXPLAIN}</p>
-
-	<fieldset class="fields2">
-<!-- ENDIF -->
-
+<!-- gothick/recaptcha2 all captcha_recaptcha2 -->
 <!-- IF S_RECAPTCHA_AVAILABLE -->
 	<!-- INCLUDEJS https://www.google.com/recaptcha/api.js?hl={L_GOTHICK_RECAPTCHA2_LANG} -->
 	<dl>
@@ -24,10 +14,4 @@
 	</dl>
 <!-- ELSE -->
 {L_GOTHICK_RECAPTCHA2_NOT_AVAILABLE}
-<!-- ENDIF -->
-
-<!-- IF S_TYPE == 1 -->
-	</fieldset>
-	</div>
-</div>
 <!-- ENDIF -->

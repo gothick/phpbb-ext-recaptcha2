@@ -1,0 +1,19 @@
+<!-- gothick/recaptcha2 subsilver2 captcha_recaptcha2 -->
+<!-- IF S_RECAPTCHA_AVAILABLE -->
+	<!-- INCLUDEJS https://www.google.com/recaptcha/api.js?hl={L_GOTHICK_RECAPTCHA2_LANG} -->
+	<tr>
+		<th colspan="2" valign="middle">{L_GOTHICK_RECAPTCHA2_CONFIRM_HUMAN}</th>
+	</tr>
+	<tr>
+		<td class="row1"><b class="genmed">{L_GOTHICK_RECAPTCHA2_CONFIRM_HUMAN}{L_COLON}</b><br /><span class="gensmall">{L_GOTHICK_RECAPTCHA2_EXPLAIN}</span></td>
+		<td class="row2">
+			<div class="g-recaptcha" data-sitekey="{RECAPTCHA2_SITEKEY}" ></div>
+			<noscript>
+				{L_GOTHICK_RECAPTCHA2_NOSCRIPT}
+			</noscript>
+		</td>
+	</tr>
+
+<!-- ELSE -->
+{L_GOTHICK_RECAPTCHA2_NOT_AVAILABLE}
+<!-- ENDIF -->
