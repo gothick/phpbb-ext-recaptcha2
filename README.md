@@ -1,6 +1,7 @@
 # phpbb-ext-recaptcha2
 
-Current status: pre-alpha. I've tested it local, for registrations only,
-and it seems to work. I'm not promising any more than that :)
+Current status: beta. This has been tested locally, and on a few
+live boards. I've done some fixes, and it mostly appears to work
+just fine. But, you know, it's still a beta. Don't blame me if
+it breaks on you :D
 
-More work to come.
