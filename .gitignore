@@ -19,5 +19,8 @@ Temporary Items
 # Composer
 /vendor/
 
+# Build script
+/build/
+
 # MG makegood configuration file that the EPV moans about.
 #makegood_preload.php
