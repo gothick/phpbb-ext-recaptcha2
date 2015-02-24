@@ -113,9 +113,7 @@ class recaptcha
 			$errno = curl_errno($conn);
 			if ($errno !== 0)
 			{
-				throw new Exception(
-						'Fatal error while contacting reCAPTCHA. ' . $errno .
-								 ': ' . curl_error($conn) . '.');
+				throw new Exception('Fatal error while contacting reCAPTCHA. ' . $errno . ': ' . curl_error($conn) . '.');
 			}
 			curl_close($conn);
 		}

@@ -239,17 +239,17 @@ class recaptcha2 extends \phpbb\captcha\plugins\captcha_abstract
 		return $hidden_fields;
 	}
 
-	function uninstall()
+	public function uninstall()
 	{
 		$this->garbage_collect(0);
 	}
 
-	function install()
+	public function install()
 	{
 		return;
 	}
 
-	function validate()
+	public function validate()
 	{
 		if (!parent::validate())
 		{
