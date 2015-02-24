@@ -1,5 +1,6 @@
 # phpbb-ext-recaptcha2
 
+[![Build Status](https://travis-ci.org/gothick/phpbb-ext-recaptcha2.svg?branch=master)](https://travis-ci.org/gothick/phpbb-ext-recaptcha2)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/gothick/phpbb-ext-recaptcha2/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/gothick/phpbb-ext-recaptcha2/?branch=master)
 
 Current status: beta. This has been tested locally, and on a few
