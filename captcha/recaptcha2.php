@@ -63,17 +63,17 @@ class recaptcha2 extends \phpbb\captcha\plugins\captcha_abstract
 
 
 	/**
-	* Constructor
-	*
-	* @param \phpbb\config\config $config
-	* @param \phpbb\db\driver\driver_interface $db
-	* @param \phpbb\user $user
-	* @param \phpbb\request\request $request
-	* @param \phpbb\template\template $template
-	* @param \phpbb\log\log_interface $log
-	* @param string $phpbb_root_path
-	* @param string $phpEx
-	*/
+	 * Constructor
+	 *
+	 * @param \phpbb\config\config $config
+	 * @param \phpbb\db\driver\driver_interface $db
+	 * @param \phpbb\user $user
+	 * @param \phpbb\request\request $request
+	 * @param \phpbb\template\template $template
+	 * @param \phpbb\log\log_interface $log
+	 * @param string $phpbb_root_path
+	 * @param string $phpEx
+	 */
 	public function __construct(
 			\phpbb\config\config $config,
 			\phpbb\db\driver\driver_interface $db,
@@ -113,8 +113,8 @@ class recaptcha2 extends \phpbb\captcha\plugins\captcha_abstract
 	}
 
 	/**
-	*  API function
-	*/
+	 *  API function
+	 */
 	public function has_config()
 	{
 		return true;
@@ -126,8 +126,8 @@ class recaptcha2 extends \phpbb\captcha\plugins\captcha_abstract
 	}
 
 	/**
-	* This function is implemented because required by the upper class, but is never used for reCaptcha.
-	*/
+	 * This function is implemented because required by the upper class, but is never used for reCaptcha.
+	 */
 	public function get_generator_class()
 	{
 		throw new \Exception('No generator class given.');

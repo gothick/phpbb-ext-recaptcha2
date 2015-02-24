@@ -61,7 +61,7 @@ class recaptcha
 	 *
 	 * @param string $secret shared secret between site and ReCAPTCHA server.
 	 */
-	public function __construct ($secret, $curl_opts = array())
+	public function __construct($secret, $curl_opts = array())
 	{
 		if ($secret == null || $secret == "")
 		{
@@ -79,7 +79,7 @@ class recaptcha
 	 *
 	 * @return array response
 	 */
-	protected function submitHTTPGet ($path, $data)
+	protected function submitHTTPGet($path, $data)
 	{
 		// MG (Though altered to replace Google's odd hand-rolled _encodeQS thingy with
 		// PHP's perfectly fine http_build_query...)
@@ -102,7 +102,7 @@ class recaptcha
 					CURLOPT_ENCODING => ''
 			);
 			// check if we got overrides, or extra options (eg. proxy configuration)
-			if (is_array($this->curl_opts) && ! empty($this->curl_opts))
+			if (is_array($this->curl_opts) && !empty($this->curl_opts))
 			{
 				$opts = array_merge($opts, $this->curl_opts);
 			}
@@ -134,7 +134,7 @@ class recaptcha
 	 *
 	 * @return recaptcha_response
 	 */
-	public function verifyResponse ($remoteIp, $response)
+	public function verifyResponse($remoteIp, $response)
 	{
 		// Discard empty solution submissions
 		if ($response == null || strlen($response) == 0)
