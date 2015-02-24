@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "84d1229791559ad17b0e3b33b10f0016",
+    "hash": "0dab372c34d2fd45df5d5b93970cc5ff",
     "packages": [
         {
             "name": "composer/installers",
@@ -202,16 +202,16 @@
         },
         {
             "name": "phing/phing",
-            "version": "2.4.14",
+            "version": "2.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phingofficial/phing.git",
-                "reference": "41075d93ca254f1c90c79ec7ce81be2b2629e138"
+                "reference": "3f7d71bf561bafea39087250f777b349438cc32e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phingofficial/phing/zipball/41075d93ca254f1c90c79ec7ce81be2b2629e138",
-                "reference": "41075d93ca254f1c90c79ec7ce81be2b2629e138",
+                "url": "https://api.github.com/repos/phingofficial/phing/zipball/3f7d71bf561bafea39087250f777b349438cc32e",
+                "reference": "3f7d71bf561bafea39087250f777b349438cc32e",
                 "shasum": ""
             },
             "require": {
@@ -251,7 +251,7 @@
                 "task",
                 "tool"
             ],
-            "time": "2012-11-29 21:23:47"
+            "time": "2013-08-26 21:13:03"
         },
         {
             "name": "phpbb/epv",
