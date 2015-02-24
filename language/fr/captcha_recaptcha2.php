@@ -35,12 +35,12 @@ $lang = array_merge($lang, array(
 	'GOTHICK_RECAPTCHA2_SECRETKEY'				=> 'Clé privée reCAPTCHA',
 	'GOTHICK_RECAPTCHA2_SECRETKEY_EXPLAIN'		=> 'Votre clé privée reCAPTCHA. Des clés peuvent être obtenues sur <a href="http://www.google.com/recaptcha">www.google.com/recaptcha</a>.',
 
-	'GOTHICK_RECAPTCHA2_CONFIRM_EXPLAIN'		=> 'Afin d’empêcher les créations de comptes automatisées, le forum vous demande de confirmer que vous êtes un humain. Si vous n’avez pas la faculté ou la possibilité d’effectuer la tâche ci-dessous, veuillez contacter le %sBoard Administrator%s.',
-	'GOTHICK_RECAPTCHA2_POST_CONFIRM_EXPLAIN' 	=> 'Afin d’empêcher les créations de comptes automatisées, le forum vous demande de confirmer que vous êtes un humain. Si vous n’avez pas la faculté ou la possibilité d’effectuer la tâche ci-dessous, veuillez contacter le %sBoard Administrator%s.',
+	'GOTHICK_RECAPTCHA2_CONFIRM_EXPLAIN'		=> 'Afin d’empêcher les créations de comptes automatisées, le forum vous demande de confirmer que vous êtes un humain. Si vous n’avez pas la faculté ou la possibilité d’effectuer la tâche ci-dessous, veuillez contacter l’%sadministrateur du forum%s.',
+	'GOTHICK_RECAPTCHA2_POST_CONFIRM_EXPLAIN' 	=> 'Afin d’empêcher les publications de messages automatisées, le forum vous demande de confirmer que vous êtes un humain. Si vous n’avez pas la faculté ou la possibilité d’effectuer la tâche ci-dessous, veuillez contacter l’%sadministrateur du forum%s.',
 
 	'GOTHICK_RECAPTCHA2_CONFIRM_HUMAN'			=> 'Veuillez confirmer que vous êtes un humain',
-	'GOTHICK_RECAPTCHA2_EXPLAIN'				=> 'Afin d’empêcher les créations de comptes automatisées, merci de saisir les deux mots affichés dans le champ texte ci-contre.',
-	'GOTHICK_RECAPTCHA2_NOSCRIPT'				=> 'Vous devez activer le JavaScript dans votre navigateur pour complêter le reCAPTCHA',
+	'GOTHICK_RECAPTCHA2_EXPLAIN'				=> 'Afin d’empêcher les requêtes de robots automatisées, nous vous demandons de confirmer que vous êtes un humain en utilisant le service reCAPTCHA de Google.',
+	'GOTHICK_RECAPTCHA2_NOSCRIPT'				=> 'Vous devez activer le JavaScript dans votre navigateur pour compléter le reCAPTCHA',
 	// TODO if necessary. We may just want to pass back dynamic messages from exceptions thrown from the reCAPTCHA library, its own specific responses, etc.
 	'GOTHICK_RECAPTCHA2_EXCEPTION'				=> 'Problème de connexion au service reCAPTCHA : %1$s. Réessayez plus tard.',
 ));
