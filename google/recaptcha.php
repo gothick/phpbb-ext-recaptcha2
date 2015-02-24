@@ -61,7 +61,7 @@ class recaptcha
 	 *
 	 * @param string $secret shared secret between site and ReCAPTCHA server.
 	 */
-	function __construct ($secret, $curl_opts = array())
+	public function __construct ($secret, $curl_opts = array())
 	{
 		if ($secret == null || $secret == "")
 		{

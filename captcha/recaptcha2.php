@@ -13,9 +13,9 @@ namespace gothick\recaptcha2\captcha;
 class recaptcha2 extends \phpbb\captcha\plugins\captcha_abstract
 {
 	// https://www.google.com/recaptcha/api/siteverify?secret=your_secret&response=response_string&remoteip=user_ip_address
-	var $recaptcha_verify_url = 'https://www.google.com/recaptcha/api/siteverify';
+	protected $recaptcha_verify_url = 'https://www.google.com/recaptcha/api/siteverify';
 
-	var $g_recaptcha_response;
+	protected $g_recaptcha_response;
 
 	// PHP really needs const with an access modifier.
 	protected static $CONFIG_SITEKEY = 'gothick_recaptcha2_sitekey';
@@ -69,7 +69,7 @@ class recaptcha2 extends \phpbb\captcha\plugins\captcha_abstract
 	* @param \phpbb\db\driver\driver_interface $db
 	* @param \phpbb\user $user
 	* @param \phpbb\request\request $request
-	* @param \phpbb\template\template $tempate
+	* @param \phpbb\template\template $template
 	* @param \phpbb\log\log_interface $log
 	* @param string $phpbb_root_path
 	* @param string $phpEx
@@ -96,7 +96,7 @@ class recaptcha2 extends \phpbb\captcha\plugins\captcha_abstract
 		$this->phpEx = $phpEx;
 	}
 
-	function init($type)
+	public function init($type)
 	{
 		$this->user->add_lang_ext('gothick/recaptcha2', 'captcha_recaptcha2');
 		parent::init($type);
@@ -115,12 +115,12 @@ class recaptcha2 extends \phpbb\captcha\plugins\captcha_abstract
 	/**
 	*  API function
 	*/
-	function has_config()
+	public function has_config()
 	{
 		return true;
 	}
 
-	static public function get_name()
+	public static function get_name()
 	{
 		return 'GOTHICK_RECAPTCHA2';
 	}
@@ -128,7 +128,7 @@ class recaptcha2 extends \phpbb\captcha\plugins\captcha_abstract
 	/**
 	* This function is implemented because required by the upper class, but is never used for reCaptcha.
 	*/
-	function get_generator_class()
+	public function get_generator_class()
 	{
 		throw new \Exception('No generator class given.');
 	}
@@ -179,16 +179,16 @@ class recaptcha2 extends \phpbb\captcha\plugins\captcha_abstract
 	}
 
 	// not needed
-	function execute_demo()
+	public function execute_demo()
 	{
 	}
 
 	// not needed
-	function execute()
+	public function execute()
 	{
 	}
 
-	function get_template()
+	public function get_template()
 	{
 		if ($this->is_solved())
 		{
@@ -221,12 +221,12 @@ class recaptcha2 extends \phpbb\captcha\plugins\captcha_abstract
 		}
 	}
 
-	function get_demo_template($id)
+	public function get_demo_template($id)
 	{
 		return $this->get_template();
 	}
 
-	function get_hidden_fields()
+	public function get_hidden_fields()
 	{
 		$hidden_fields = array();
 

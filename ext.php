@@ -13,7 +13,7 @@ namespace gothick\recaptcha2;
 class ext extends \phpbb\extension\base
 {
 	// override disable_step
-	function disable_step($old_state)
+	public function disable_step($old_state)
 	{
 		switch ($old_state)
 		{
