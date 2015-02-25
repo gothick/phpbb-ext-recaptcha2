@@ -30,7 +30,7 @@ env:
   global:
     - EXTNAME="gothick/recaptcha2"  # CHANGE name of the extension HERE
     - SNIFF="1"            # Should we run code sniffer on your code?
-    - IMAGE_ICC="1"        # Should we run icc profile sniffer on your images?
+    - IMAGE_ICC="0"        # Disabled because it finds stuff in vendor/phing etc.
     - EPV="1"              # Should we run EPV (Extension Pre Validator) on your code?
     - PHPBB_BRANCH="3.1.x"
 
