@@ -93,7 +93,6 @@ class recaptcha
 			$opts = array(
 					CURLOPT_HEADER => false,
 					CURLOPT_RETURNTRANSFER => true,
-					CURLOPT_FOLLOWLOCATION => true,
 					CURLOPT_USERAGENT => 'ReCaptcha ' . self::VERSION,
 					CURLOPT_AUTOREFERER => true,
 					CURLOPT_CONNECTTIMEOUT => 60,
