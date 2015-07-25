@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Gothick reCAPTCHA 2.0
  *
