@@ -31,11 +31,11 @@ $lang = array_merge($lang, array(
 
 	// Keys
 	'GOTHICK_RECAPTCHA2_SITEKEY'				=> 'reCaptcha site key',
-	'GOTHICK_RECAPTCHA2_SITEKEY_EXPLAIN'        => 'Twój publiczny klucz reCaptcha. Klucze można wygenerować na <a href="http://www.google.com/recaptcha">www.google.com/recaptcha</a>.',
+	'GOTHICK_RECAPTCHA2_SITEKEY_EXPLAIN'		=> 'Twój publiczny klucz reCaptcha. Klucze można wygenerować na <a href="http://www.google.com/recaptcha">www.google.com/recaptcha</a>.',
 	'GOTHICK_RECAPTCHA2_SECRETKEY'				=> 'reCaptcha secret key',
 	'GOTHICK_RECAPTCHA2_SECRETKEY_EXPLAIN'		=> 'Twój prywatny klucz reCaptcha. Klucze można wygenerować na <a href="http://www.google.com/recaptcha">www.google.com/recaptcha</a>.',
 
-	'GOTHICK_RECAPTCHA2_CONFIRM_EXPLAIN'        => 'Aby zapobiec automatycznym rejestracjom musisz potwierdzić, że jesteś człowiekiem. W razie problemów, należy skontaktować się z %sadministratorem%s.',
+	'GOTHICK_RECAPTCHA2_CONFIRM_EXPLAIN'		=> 'Aby zapobiec automatycznym rejestracjom musisz potwierdzić, że jesteś człowiekiem. W razie problemów, należy skontaktować się z %sadministratorem%s.',
 	'GOTHICK_RECAPTCHA2_POST_CONFIRM_EXPLAIN' 	=> 'Aby zapobiec automatycznym rejestracjom musisz potwierdzić, że jesteś człowiekiem. W razie problemów, należy skontaktować się z %sadministratorem%s.',
 
 	'GOTHICK_RECAPTCHA2_CONFIRM_HUMAN'			=> 'Potwierdź że jesteś człowiekiem',
