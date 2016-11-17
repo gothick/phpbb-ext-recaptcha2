@@ -263,7 +263,7 @@ class recaptcha2 extends \phpbb\captcha\plugins\captcha_abstract
 					$this->solved = true;
 					return false;
 				} else {
-					$errors = $response->getErrorCodes();
+					// $errors = $response->getErrorCodes();
 					// TODO: Can we pass something less general back from the error response above?
 					return $this->user->lang['GOTHICK_RECAPTCHA2_INCORRECT'];
 				}
