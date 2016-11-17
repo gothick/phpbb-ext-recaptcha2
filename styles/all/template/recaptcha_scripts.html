@@ -1,0 +1,19 @@
+	<!-- IF 0 -->
+
+		Google's default reCAPTCHA initialisation doesn't cope with multiple reCAPTCHAs per page. We may have multiple reCAPTCHAs. For
+		example, the QuickLogin extension reproduces the login form on most pages, which adds an additional reCAPTCHA to pages which
+		already have one, e.g. the Topic Reply page for guest users.
+
+		I'm therefore using this trick: http://stackoverflow.com/a/33535769/300836 to initialise each of the multiple reCAPTCHAs, along
+		with template code to make sure our reCAPTCHA script, etc. only gets used once. The template code is here, and the reCAPTCHA
+		initialisation code is in init_recaptcha.js.
+
+		See GitHub issue #18.
+
+	<!-- ENDIF -->
+	<!-- IF !$GOTHICK_RECAPTCHA2_INCLUDED -->
+		<!-- INCLUDEJS https://www.google.com/recaptcha/api.js?onload=gothick_recaptcha2_callback&render=explicit&hl={L_GOTHICK_RECAPTCHA2_LANG} -->
+		<!-- INCLUDEJS @gothick_recaptcha2/js/init_recaptcha.js -->
+		<script>var gothick_recaptcha2_sitekey = '{RECAPTCHA2_SITEKEY}';</script>
+		<!-- DEFINE $GOTHICK_RECAPTCHA2_INCLUDED = true -->
+	<!-- ENDIF -->
