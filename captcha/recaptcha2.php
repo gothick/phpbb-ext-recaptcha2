@@ -12,9 +12,6 @@ namespace gothick\recaptcha2\captcha;
 
 class recaptcha2 extends \phpbb\captcha\plugins\captcha_abstract
 {
-	// https://www.google.com/recaptcha/api/siteverify?secret=your_secret&response=response_string&remoteip=user_ip_address
-	protected $recaptcha_verify_url = 'https://www.google.com/recaptcha/api/siteverify';
-
 	protected $g_recaptcha_response;
 
 	// PHP really needs const with an access modifier.
@@ -259,16 +256,15 @@ class recaptcha2 extends \phpbb\captcha\plugins\captcha_abstract
 		{
 			try
 			{
-				$recaptcha = new \gothick\recaptcha2\google\recaptcha($this->config[self::$CONFIG_SECRETKEY]);
-				$response = $recaptcha->verifyResponse($this->user->ip, $this->request->variable('g-recaptcha-response', ''));
-				if ($response->success)
-				{
+				// TODO We should probably dependency-inject this 
+				$recaptcha = new \ReCaptcha\ReCaptcha($this->config[self::$CONFIG_SECRETKEY]);
+				$response = $recaptcha->verify($this->request->variable('g-recaptcha-response', ''), $this->user->ip);
+				if ($response->isSuccess()) {
 					$this->solved = true;
 					return false;
-				}
-				else
-				{
-					// TODO: Can we pass something less general back from the response?
+				} else {
+					$errors = $response->getErrorCodes();
+					// TODO: Can we pass something less general back from the error response above?
 					return $this->user->lang['GOTHICK_RECAPTCHA2_INCORRECT'];
 				}
 			}
