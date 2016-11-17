@@ -1,6 +1,9 @@
 <!-- gothick/recaptcha2 subsilver2 captcha_recaptcha2 -->
 <!-- IF S_RECAPTCHA_AVAILABLE -->
-	<!-- INCLUDEJS https://www.google.com/recaptcha/api.js?hl={L_GOTHICK_RECAPTCHA2_LANG} -->
+	<!-- IF !$GOTHICK_RECAPTCHA2_INCLUDED -->
+		<!-- INCLUDEJS https://www.google.com/recaptcha/api.js?hl={L_GOTHICK_RECAPTCHA2_LANG} -->
+		<!-- DEFINE $GOTHICK_RECAPTCHA2_INCLUDED = true -->
+	<!-- ENDIF -->
 	<tr>
 		<th colspan="2" valign="middle">{L_GOTHICK_RECAPTCHA2_CONFIRM_HUMAN}</th>
 	</tr>
