@@ -256,13 +256,16 @@ class recaptcha2 extends \phpbb\captcha\plugins\captcha_abstract
 		{
 			try
 			{
-				// TODO We should probably dependency-inject this 
+				// TODO We should probably dependency-inject this
 				$recaptcha = new \ReCaptcha\ReCaptcha($this->config[self::$CONFIG_SECRETKEY]);
 				$response = $recaptcha->verify($this->request->variable('g-recaptcha-response', ''), $this->user->ip);
-				if ($response->isSuccess()) {
+				if ($response->isSuccess()) 
+				{
 					$this->solved = true;
 					return false;
-				} else {
+				}
+				else
+				{
 					// $errors = $response->getErrorCodes();
 					// TODO: Can we pass something less general back from the error response above?
 					return $this->user->lang['GOTHICK_RECAPTCHA2_INCORRECT'];
