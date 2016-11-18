@@ -259,7 +259,7 @@ class recaptcha2 extends \phpbb\captcha\plugins\captcha_abstract
 				// TODO We should probably dependency-inject this
 				$recaptcha = new \ReCaptcha\ReCaptcha($this->config[self::$CONFIG_SECRETKEY]);
 				$response = $recaptcha->verify($this->request->variable('g-recaptcha-response', ''), $this->user->ip);
-				if ($response->isSuccess()) 
+				if ($response->isSuccess())
 				{
 					$this->solved = true;
 					return false;
