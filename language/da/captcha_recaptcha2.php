@@ -35,12 +35,12 @@ $lang = array_merge($lang, array(
 	'GOTHICK_RECAPTCHA2_SECRETKEY'				=> 'reCaptcha secret key',
 	'GOTHICK_RECAPTCHA2_SECRETKEY_EXPLAIN'		=> 'Din hemmelige reCaptcha key. Nøgler kan findes her <a href="http://www.google.com/recaptcha">www.google.com/recaptcha</a>.',
 
-	'GOTHICK_RECAPTCHA2_CONFIRM_EXPLAIN'		=> 'To prevent automated registrations the board requires you to confirm that you are a human. If you are visually impaired or cannot otherwise complete the below task please contact the %sBoard Administrator%s.',
-	'GOTHICK_RECAPTCHA2_POST_CONFIRM_EXPLAIN' 	=> 'To prevent automated posts the board requires you to confirm that you are a human. If you are visually impaired or cannot otherwise complete the below task, please contact the %sBoard Administrator%s.',
+	'GOTHICK_RECAPTCHA2_CONFIRM_EXPLAIN'		=> 'For at undgå automatiserede brugeroprettelser, kræver dette fora at du bekærfter at du er et menneske. Hvis du er synshæmmet, eller på anden måde ikke kan klare den nedenstående opgave, bedes du venligst kontake en adminstrator',
+	'GOTHICK_RECAPTCHA2_POST_CONFIRM_EXPLAIN' 	=> 'For at undgå automatiserede opslag, kræver dette fora at du bekærfter at du er et menneske. Hvis du er synshæmmet, eller på anden måde ikke kan klare den nedenstående opgave, bedes du venligst kontake en adminstrator',
 
-	'GOTHICK_RECAPTCHA2_CONFIRM_HUMAN'			=> 'Please confirm that you’re human',
-	'GOTHICK_RECAPTCHA2_EXPLAIN'				=> 'In an effort to prevent automatic submissions, we require that you confirm you’re human using Google’s reCAPTCHA service.',
-	'GOTHICK_RECAPTCHA2_NOSCRIPT'				=> 'You must enable JavaScript in your browser to complete the reCAPTCHA',
+	'GOTHICK_RECAPTCHA2_CONFIRM_HUMAN'			=> 'Bekræft venligst, at du er et menneske',
+	'GOTHICK_RECAPTCHA2_EXPLAIN'				=> 'For at undgå automatiske opslag, bedes du bekræfte at du er et menneske, ved hjælp af Googles reCAPTCHA service.',
+	'GOTHICK_RECAPTCHA2_NOSCRIPT'				=> 'JavaScript skal være aktiveret i din browser, for at kunne benytte reCAPTCHA',
 	// TODO if necessary. We may just want to pass back dynamic messages from exceptions thrown from the reCAPTCHA library, its own specific responses, etc.
-	'GOTHICK_RECAPTCHA2_EXCEPTION'				=> 'There was a general error connecting to the reCAPTCHA service: %1$s. Try again later.',
+	'GOTHICK_RECAPTCHA2_EXCEPTION'				=> 'Der er opstået en generel fejl, i forsøget på at forbinde til reCAPTCHA servicen: %1$s. Prøv igen senere.',
 ));
