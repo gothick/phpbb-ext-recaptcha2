@@ -163,11 +163,11 @@ class recaptcha2 extends \phpbb\captcha\plugins\captcha_abstract
 			}
 
 			$this->log->add('admin', $this->user->data['user_id'], $this->user->ip, 'LOG_CONFIG_VISUAL');
-			trigger_error($this->lang->lang['CONFIG_UPDATED'] . adm_back_link($module->u_action));
+			trigger_error($this->lang->lang('CONFIG_UPDATED') . adm_back_link($module->u_action));
 		}
 		else if ($this->request->is_set_post('submit'))
 		{
-			trigger_error($this->lang->lang['FORM_INVALID'] . adm_back_link($module->u_action));
+			trigger_error($this->lang->lang('FORM_INVALID'). adm_back_link($module->u_action));
 		}
 
 		foreach ($captcha_vars as $captcha_var => $template_var)
@@ -276,7 +276,7 @@ class recaptcha2 extends \phpbb\captcha\plugins\captcha_abstract
 				{
 					// $errors = $response->getErrorCodes();
 					// TODO: Can we pass something less general back from the error response above?
-					return $this->lang->lang['GOTHICK_RECAPTCHA2_INCORRECT'];
+					return $this->lang->lang('GOTHICK_RECAPTCHA2_INCORRECT');
 				}
 			}
 			catch (\Exception $e)
