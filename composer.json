@@ -3,7 +3,7 @@
    "type": "phpbb-extension",
    "description": "Google reCAPTCHA 2.0 anti-spambot plugin",
    "homepage": "https://github.com/gothick/phpbb-ext-recaptcha2",
-   "version": "1.0.4",
+   "version": "1.1.0",
    "time": "2015-01-29",
    "license": "GPL-2.0",
    "authors": [{
@@ -13,7 +13,7 @@
       "role": "Lead Developer"
    }],
    "require": {
-      "php": ">=5.3.3",
+      "php": ">=5.6",
       "composer/installers": "~1.0",
       "google/recaptcha": "~1.1"
    },
@@ -23,7 +23,7 @@
    "extra": {
       "display-name": "reCAPTCHA 2.0",
       "soft-require" : {
-         "phpbb/phpbb": ">=3.1.0-RC2,<3.2@dev"
+         "phpbb/phpbb": "~3.2"
       }
    }
 }
