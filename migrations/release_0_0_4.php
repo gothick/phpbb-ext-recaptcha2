@@ -15,7 +15,7 @@ class release_0_0_4 extends \phpbb\db\migration\migration
 	public static function depends_on()
 	{
 		return array(
-					'\phpbb\db\migration\data\v310\alpha2'
+					'\phpbb\db\migration\data\v32x\v321'
 		);
 	}
 
