@@ -164,8 +164,7 @@ class recaptcha2 extends \phpbb\captcha\plugins\captcha_abstract
 
 			$this->log->add('admin', $this->user->data['user_id'], $this->user->ip, 'LOG_CONFIG_VISUAL');
 			trigger_error($this->lang->lang('CONFIG_UPDATED') . adm_back_link($module->u_action));
-		}
-		else if ($this->request->is_set_post('submit'))
+		} else if ($this->request->is_set_post('submit'))
 		{
 			trigger_error($this->lang->lang('FORM_INVALID'). adm_back_link($module->u_action));
 		}
@@ -198,8 +197,7 @@ class recaptcha2 extends \phpbb\captcha\plugins\captcha_abstract
 		if ($this->is_solved())
 		{
 			return false;
-		}
-		else
+		} else
 		{
 			$contact_link = phpbb_get_board_contact_link($this->config, $this->phpbb_root_path, $this->phpEx);
 			$explain = $this->lang->lang(($this->type != CONFIRM_POST) ? 'GOTHICK_RECAPTCHA2_CONFIRM_EXPLAIN' : 'GOTHICK_RECAPTCHA2_POST_CONFIRM_EXPLAIN', '<a href="' . $contact_link . '">', '</a>');
@@ -259,8 +257,7 @@ class recaptcha2 extends \phpbb\captcha\plugins\captcha_abstract
 		if (!parent::validate())
 		{
 			return false;
-		}
-		else
+		} else
 		{
 			try
 			{
@@ -271,14 +268,12 @@ class recaptcha2 extends \phpbb\captcha\plugins\captcha_abstract
 				{
 					$this->solved = true;
 					return false;
-				}
-				else
+				} else
 				{
 					// TODO: The response object has a getErrorCodes method. Can we pass something less general back?
 					return $this->lang->lang('GOTHICK_RECAPTCHA2_INCORRECT');
 				}
-			}
-			catch (\Exception $e)
+			} catch (\Exception $e)
 			{
 				trigger_error($this->lang->lang('GOTHICK_RECAPTCHA2_EXCEPTION', $e->getMessage()), E_USER_ERROR);
 			}
