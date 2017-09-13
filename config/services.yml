@@ -4,13 +4,14 @@ services:
         calls:
             - [set_name, [gothick.recaptcha2.captcha.recaptcha2]]
         arguments:
-            - @config
-            - @dbal.conn
-            - @user
-            - @request
-            - @template
-            - @log
-            - %core.root_path%
-            - %core.php_ext%
+            - '@config'
+            - '@dbal.conn'
+            - '@user'
+            - '@language'
+            - '@request'
+            - '@template'
+            - '@log'
+            - '%core.root_path%'
+            - '%core.php_ext%'
         tags:
             - { name: captcha.plugins }
