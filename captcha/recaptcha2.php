@@ -49,12 +49,12 @@ class recaptcha2 extends \phpbb\captcha\plugins\captcha_abstract
 	protected $log;
 
 	/**
-	 * @var scalar string
+	 * @var string
 	 */
 	protected $phpbb_root_path;
 
 	/**
-	 * @var scalar string
+	 * @var string
 	 */
 	protected $phpEx;
 
