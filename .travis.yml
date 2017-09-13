@@ -1,5 +1,5 @@
 language: php
-dist: precise
+dist: trusty
 sudo: required
 
 matrix:
@@ -7,6 +7,10 @@ matrix:
     - php: 5.6
       env: DB=mysqli
     - php: 5.6
+      # phpBB's MariaDB stuff only seems to be set up for Travis's deprecated Precise
+      # environment. I'm okay with that, especially as I can't think of anything I
+      # could do to make things not work on MariaDB when they work on MySQL...
+      dist: precise    
       env: DB=mariadb
     - php: 5.6
       env: DB=postgres
