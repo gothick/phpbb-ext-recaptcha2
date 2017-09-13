@@ -274,8 +274,7 @@ class recaptcha2 extends \phpbb\captcha\plugins\captcha_abstract
 				}
 				else
 				{
-					// $errors = $response->getErrorCodes();
-					// TODO: Can we pass something less general back from the error response above?
+					// TODO: The response object has a getErrorCodes method. Can we pass something less general back?
 					return $this->lang->lang('GOTHICK_RECAPTCHA2_INCORRECT');
 				}
 			}
