@@ -29,6 +29,11 @@ class recaptcha2 extends \phpbb\captcha\plugins\captcha_abstract
 	protected $db;
 
 	/**
+	 * @var \phpbb\language\language
+	 */
+	protected $lang;
+
+	/**
 	 * @var \phpbb\user
 	 */
 	protected $user;
@@ -65,6 +70,7 @@ class recaptcha2 extends \phpbb\captcha\plugins\captcha_abstract
 	 * @param \phpbb\config\config $config
 	 * @param \phpbb\db\driver\driver_interface $db
 	 * @param \phpbb\user $user
+	 * @param \phpbb\language\language $lang
 	 * @param \phpbb\request\request $request
 	 * @param \phpbb\template\template $template
 	 * @param \phpbb\log\log_interface $log
@@ -75,6 +81,7 @@ class recaptcha2 extends \phpbb\captcha\plugins\captcha_abstract
 			\phpbb\config\config $config,
 			\phpbb\db\driver\driver_interface $db,
 			\phpbb\user $user,
+			\phpbb\language\language $lang,
 			\phpbb\request\request $request,
 			\phpbb\template\template $template,
 			\phpbb\log\log_interface $log,
@@ -86,6 +93,7 @@ class recaptcha2 extends \phpbb\captcha\plugins\captcha_abstract
 		$this->config = $config;
 		$this->db = $db;
 		$this->user = $user;
+		$this->lang = $lang;
 		$this->request = $request;
 		$this->template = $template;
 		$this->log = $log;
@@ -95,7 +103,7 @@ class recaptcha2 extends \phpbb\captcha\plugins\captcha_abstract
 
 	public function init($type)
 	{
-		$this->user->add_lang_ext('gothick/recaptcha2', 'captcha_recaptcha2');
+		$this->lang->add_lang('captcha_recaptcha2', 'gothick/recaptcha2');
 		parent::init($type);
 		$this->g_recaptcha_response = $this->request->variable('g-recaptcha-response', '');
 	}
@@ -104,7 +112,7 @@ class recaptcha2 extends \phpbb\captcha\plugins\captcha_abstract
 	{
 		// We need to load the language files here for the ACP page, as it doesn't call init. This is
 		// where the "old" reCAPTCHA plug in core does it, anyway...
-		$this->user->add_lang_ext('gothick/recaptcha2', 'captcha_recaptcha2');
+		$this->lang->add_lang('captcha_recaptcha2', 'gothick/recaptcha2');
 
 		return (!empty($this->config[self::$CONFIG_SITEKEY]) && !empty($this->config[self::$CONFIG_SECRETKEY]));
 	}
@@ -155,11 +163,11 @@ class recaptcha2 extends \phpbb\captcha\plugins\captcha_abstract
 			}
 
 			$this->log->add('admin', $this->user->data['user_id'], $this->user->ip, 'LOG_CONFIG_VISUAL');
-			trigger_error($this->user->lang['CONFIG_UPDATED'] . adm_back_link($module->u_action));
+			trigger_error($this->lang->lang['CONFIG_UPDATED'] . adm_back_link($module->u_action));
 		}
 		else if ($this->request->is_set_post('submit'))
 		{
-			trigger_error($this->user->lang['FORM_INVALID'] . adm_back_link($module->u_action));
+			trigger_error($this->lang->lang['FORM_INVALID'] . adm_back_link($module->u_action));
 		}
 
 		foreach ($captcha_vars as $captcha_var => $template_var)
@@ -194,10 +202,10 @@ class recaptcha2 extends \phpbb\captcha\plugins\captcha_abstract
 		else
 		{
 			$contact_link = phpbb_get_board_contact_link($this->config, $this->phpbb_root_path, $this->phpEx);
-			$explain = $this->user->lang(($this->type != CONFIRM_POST) ? 'GOTHICK_RECAPTCHA2_CONFIRM_EXPLAIN' : 'GOTHICK_RECAPTCHA2_POST_CONFIRM_EXPLAIN', '<a href="' . $contact_link . '">', '</a>');
+			$explain = $this->lang->lang(($this->type != CONFIRM_POST) ? 'GOTHICK_RECAPTCHA2_CONFIRM_EXPLAIN' : 'GOTHICK_RECAPTCHA2_POST_CONFIRM_EXPLAIN', '<a href="' . $contact_link . '">', '</a>');
 
 			// Language code for reCAPTCHA to use
-			$recaptcha2_lang = $this->user->lang('GOTHICK_RECAPTCHA2_LANG');
+			$recaptcha2_lang = $this->lang->lang('GOTHICK_RECAPTCHA2_LANG');
 			if ($recaptcha2_lang == 'GOTHICK_RECAPTCHA2_LANG')
 			{
 				// If we don't have a language code set in our language file, then we don't
@@ -268,12 +276,12 @@ class recaptcha2 extends \phpbb\captcha\plugins\captcha_abstract
 				{
 					// $errors = $response->getErrorCodes();
 					// TODO: Can we pass something less general back from the error response above?
-					return $this->user->lang['GOTHICK_RECAPTCHA2_INCORRECT'];
+					return $this->lang->lang['GOTHICK_RECAPTCHA2_INCORRECT'];
 				}
 			}
 			catch (\Exception $e)
 			{
-				trigger_error($this->user->lang('GOTHICK_RECAPTCHA2_EXCEPTION', $e->getMessage()), E_USER_ERROR);
+				trigger_error($this->lang->lang('GOTHICK_RECAPTCHA2_EXCEPTION', $e->getMessage()), E_USER_ERROR);
 			}
 		}
 	}
