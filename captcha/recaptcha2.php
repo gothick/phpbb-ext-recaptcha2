@@ -14,7 +14,7 @@ class recaptcha2 extends \phpbb\captcha\plugins\captcha_abstract
 {
 	protected $g_recaptcha_response;
 
-	// PHP really needs const with an access modifier.
+	// When everyone's on PHP 7.1+ we can use protected class constants...
 	protected static $CONFIG_SITEKEY = 'gothick_recaptcha2_sitekey';
 	protected static $CONFIG_SECRETKEY = 'gothick_recaptcha2_secretkey';
 
